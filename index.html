@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="km">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GOBO GOBEE | Link Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Khmer Fonts: Dangrek, Kantumruy Pro, Koulen -->
+  <link href="https://fonts.googleapis.com/css2?family=Dangrek&family=Kantumruy+Pro:wght@400;500;600;700&family=Koulen&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      /* White & Purple Theme Variables */
+      --bg-color-1: #ffffff;
+      --bg-color-2: #fcfaff;
+      --bg-color-3: #f3e8ff; /* Light purple */
+      
+      --accent-purple: #8B5CF6; /* Vibrant Purple */
+      --accent-purple-dark: #5B21B6; /* Deep Purple */
+      --accent-purple-light: #C4B5FD; /* Soft Purple */
+      
+      --text-main: #2E1065; /* Very dark purple for contrast */
+      --text-muted: #6B7280; /* Gray for subtitles */
+      
+      --card-bg: rgba(255, 255, 255, 0.7);
+      --card-border: rgba(139, 92, 246, 0.15);
+      --card-hover-border: rgba(139, 92, 246, 0.5);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Koulen', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: clamp(1rem, 4vw, 2rem);
+      overflow-x: hidden;
+      color: var(--text-main);
+      background-color: var(--bg-color-1);
+    }
+
+    /* --- Bright Animated Background --- */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -2;
+      background: linear-gradient(135deg, #ffffff, #f5f3ff, #ede9fe, #ffffff);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* --- Soft Purple Floating Orbs --- */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: -1;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .orb-1 {
+      width: 400px;
+      height: 400px;
+      background: #c4b5fd; /* Light violet */
+      top: -10%;
+      left: -15%;
+      animation: floatOrb 15s ease-in-out infinite alternate;
+    }
+
+    .orb-2 {
+      width: 350px;
+      height: 350px;
+      background: #d8b4fe; /* Bright purple */
+      bottom: -10%;
+      right: -10%;
+      animation: floatOrb 18s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(80px, 60px) scale(1.1); }
+    }
+
+    /* --- Typography Classes --- */
+    .dangrek-regular {
+      font-family: "Dangrek", sans-serif;
+      font-weight: 400;
+    }
+
+    .kantumruy-pro {
+      font-family: "Kantumruy Pro", sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .page-wrap {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 32rem;
+      margin: 0 auto;
+      perspective: 1000px;
+    }
+
+    /* --- Logo Animation --- */
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+      animation: fadeInDown 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .logo-wrapper {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      padding: 4px;
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-purple-light));
+      box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .logo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #ffffff;
+      background-color: #fff;
+    }
+
+    .ripple {
+      position: absolute;
+      inset: -10px;
+      border-radius: 50%;
+      border: 2px solid var(--accent-purple);
+      opacity: 0;
+      animation: rippleEffect 3s linear infinite;
+    }
+    .ripple:nth-child(2) {
+      border-color: var(--accent-purple-light);
+      animation-delay: 1.5s;
+    }
+
+    @keyframes rippleEffect {
+      0% { transform: scale(0.8); opacity: 0.6; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+
+    /* --- Premium 3D Brand Text --- */
+    .brand-title {
+      font-size: clamp(1.8rem, 6vw, 2.5rem);
+      text-align: center;
+      letter-spacing: 2px;
+      background: linear-gradient(to right, var(--accent-purple-dark), var(--accent-purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0px 2px 4px rgba(139, 92, 246, 0.2));
+      animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both 0.2s;
+    }
+
+    /* --- Header Info Card --- */
+    .info-header {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(91, 33, 182, 0.05);
+      animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both 0.3s;
+    }
+
+    .info-header h1 {
+      font-size: 1.3rem;
+      color: var(--accent-purple-dark);
+      margin-bottom: 0.5rem;
+    }
+    
+    .info-header p {
+      font-size: 1.1rem;
+      color: var(--accent-purple);
+      font-weight: 600;
+    }
+
+    /* --- Glassmorphism Links (Light Theme) --- */
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 1.25rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      text-decoration: none;
+      color: var(--text-main);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(139, 92, 246, 0.06);
+      transform-style: preserve-3d;
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      opacity: 0;
+      animation: slideInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Staggered Animations */
+    .link-card:nth-of-type(1) { animation-delay: 0.4s; }
+    .link-card:nth-of-type(2) { animation-delay: 0.5s; }
+    .link-card:nth-of-type(3) { animation-delay: 0.6s; }
+    .link-card:nth-of-type(4) { animation-delay: 0.7s; }
+    .link-card:nth-of-type(5) { animation-delay: 0.8s; }
+
+    .link-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: -100%;
+      width: 50%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+      transform: skewX(-25deg);
+      transition: 0.5s;
+      z-index: 1;
+    }
+
+    .link-card:hover::before {
+      left: 125%;
+      transition: 0.7s ease-in-out;
+    }
+
+    .link-card:hover {
+      background: #ffffff;
+      border-color: var(--card-hover-border);
+      box-shadow: 0 15px 30px rgba(139, 92, 246, 0.15), 0 0 15px rgba(139, 92, 246, 0.1);
+      transform: translateY(-4px) scale(1.02);
+    }
+
+    .icon-box {
+      width: 3.2rem;
+      height: 3.2rem;
+      border-radius: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 2;
+    }
+
+    .link-card:hover .icon-box {
+      transform: scale(1.15) rotate(5deg);
+    }
+
+    .card-content {
+      z-index: 2;
+    }
+
+    .card-content h2 {
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+      letter-spacing: 0.5px;
+      color: var(--accent-purple-dark);
+    }
+
+    .card-content p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* --- Special Offer Badge --- */
+    .special-offer {
+      text-align: center;
+      margin-top: 2rem;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 1.2s;
+    }
+
+    .offer-img-wrapper {
+      display: inline-block;
+      padding: 0.4rem;
+      background: #ffffff;
+      border-radius: 1rem;
+      border: 1px solid var(--accent-purple-light);
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(139, 92, 246, 0.15);
+    }
+
+    .offer-img-wrapper:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(139, 92, 246, 0.3);
+      border-color: var(--accent-purple);
+    }
+
+    .offer-img-wrapper img {
+      height: 50px;
+      border-radius: 0.6rem;
+    }
+
+    .special-offer p {
+      margin-top: 0.75rem;
+      color: var(--accent-purple-dark);
+      font-weight: 600;
+      font-size: 1.1rem;
+      animation: pulseText 2s infinite;
+    }
+
+    @keyframes pulseText {
+      0%, 100% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.03); text-shadow: 0 0 15px rgba(139, 92, 246, 0.4); }
+    }
+
+    /* --- Animations --- */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px) scale(0.9); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Animated Background Elements -->
+  <div class="animated-bg"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <div class="page-wrap">
+    
+    <!-- Logo -->
+    <div class="logo-container">
+      <div class="logo-wrapper">
+        <div class="ripple"></div>
+        <div class="ripple"></div>
+        <img src="gobe.png" 
+             onerror="this.onerror=null; this.src='https://placehold.co/200x200/F3E8FF/5B21B6?text=GOBO'" 
+             alt="GOBO GOBEE Logo">
+      </div>
+    </div>
+
+    <!-- Title -->
+    <h1 class="brand-title">GOBO GOBE</h1>
+
+    <!-- Header Card -->
+    <div class="info-header">
+      <h1>សូមជ្រើសរើសការទាក់ទង</h1>
+      <p class="kantumruy-pro">Tel: 096 8899889 | 085 88888 1 | 067 88888 1</p>
+      <p class="text-sm mt-1 text-purple-600 kantumruy-pro">Telegram: 096 8899889 | 085 88888 1 | 067 88888 1</p>
+    </div>
+
+    <!-- Contact Links (Unified Purple Gradients for Icons) -->
+    
+    <a href="https://web.facebook.com/gobophoneshop?_rdc=1&_rdr#" target="_blank" class="link-card js-tilt click-trigger">
+      <div class="icon-box bg-gradient-to-br from-blue-500 to-purple-600">
+        <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M14 11.5h2.5l.5-2.5H14V7c0-.6.4-1 1-1h1.5V3.5h-2c-2.8 0-4 1.2-4 3.7V9h-2v2.5h2V20h3z"></path>
+        </svg>
+      </div>
+      <div class="card-content">
+        <h2>GOBO | GOBE online shop</h2>
+        <p class="dangrek-regular">បណ្តាញព័ត៌មានពីឈ្មោះ: Facebook Page</p>
+      </div>
+    </a>
+
+    <a href="https://www.facebook.com/gobephonestore" target="_blank" class="link-card js-tilt click-trigger">
+      <div class="icon-box bg-gradient-to-br from-blue-500 to-purple-600">
+        <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M14 11.5h2.5l.5-2.5H14V7c0-.6.4-1 1-1h1.5V3.5h-2c-2.8 0-4 1.2-4 3.7V9h-2v2.5h2V20h3z"></path>
+        </svg>
+      </div>
+      <div class="card-content">
+        <h2>GOBO | GOBE Phone Store</h2>
+        <p class="dangrek-regular">បណ្តាញព័ត៌មានពីឈ្មោះ: Facebook Page</p>
+      </div>
+    </a>
+
+
+    <a href="https://www.tiktok.com/@gojophoneshop7799" target="_blank" class="link-card js-tilt click-trigger">
+      <div class="icon-box bg-gradient-to-br from-purple-800 to-gray-900">
+        <img src="./gobe.png" 
+             onerror="this.onerror=null; this.src='https://placehold.co/100x100/111827/FFFFFF?text=TT'" 
+             alt="TikTok" class="w-full h-full object-cover opacity-90">
+      </div>
+      <div class="card-content">
+        <h2>TikTok</h2>
+        <p class="dangrek-regular">គណនីផ្លូវការ TikTok ឈ្មោះ : GOBO GOBEE Phone Shop</p>
+      </div>
+    </a>
+
+    <a href="https://www.tiktok.com/@magnetic_apple_gojo" target="_blank" class="link-card js-tilt click-trigger">
+      <div class="icon-box bg-gradient-to-br from-purple-800 to-gray-900">
+        <img src="./gobe.png" 
+             onerror="this.onerror=null; this.src='https://placehold.co/100x100/111827/FFFFFF?text=TT'" 
+             alt="TikTok" class="w-full h-full object-cover opacity-90">
+      </div>
+      <div class="card-content">
+        <h2>TikTok</h2>
+        <p class="dangrek-regular">គណនីផ្លូវការ TikTok ឈ្មោះ : GOBO GOBEE Phone Shop</p>
+      </div>
+    </a>
+
+    <a href="https://t.me/MagneticwholeSale" target="_blank" class="link-card js-tilt click-trigger">
+      <div class="icon-box bg-gradient-to-br from-sky-400 to-purple-500">
+        <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M9.999 15.17l-.39 5.58c.56 0 .8-.24 1.1-.53l2.64-2.52 5.47 4c1 .56 1.72.27 1.98-.92l3.59-16.85.01-.01c.32-1.49-.54-2.07-1.52-1.72L1.45 9.53c-1.46.58-1.44 1.41-.25 1.79l5.88 1.83L18.69 6.2c.59-.36 1.13-.16.69.23"></path>
+        </svg>
+      </div>
+      <div class="card-content">
+        <h2>Telegram</h2>
+        <p class="dangrek-regular">ទាក់ទង Telegram</p>
+      </div>
+    </a>
+
+    <a href="https://maps.app.goo.gl/9KG5xpmnccYRNGXU6" target="_blank" class="link-card js-tilt click-trigger">
+      <div class="icon-box bg-gradient-to-br from-purple-400 to-purple-700">
+        <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zM12 11.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5 14.5 7.6 14.5 9 13.4 11.5 12 11.5z"></path>
+        </svg>
+      </div>
+      <div class="card-content">
+        <h2>ទីតាំងហាង</h2>
+        <p class="dangrek-regular">GOBO | GOBE online shop ផ្លូវកម្ពុជាក្រោម</p>
+      </div>
+    </a>
+
+    <!-- Special Offer -->
+    <div class="special-offer">
+      <a href="https://www.facebook.com/gobephonestore" target="_blank" class="offer-img-wrapper click-trigger">
+        <img src="gobe.png" 
+             onerror="this.onerror=null; this.src='https://placehold.co/180x60/8B5CF6/FFFFFF?text=Special+Offer'" 
+             alt="Special Offer">
+      </a>
+      <p class="kantumruy-pro">ចុចទីនេះដើម្បីដឹងតម្លៃពិសេស!</p>
+    </div>
+
+    <!-- Footer Icon -->
+    <div class="flex justify-center mt-6 pb-6 opacity-0 animate-[fadeIn_1s_ease_forwards_1.4s]">
+      <a href="https://www.facebook.com/gobephonestore" target="_blank" class="bg-purple-100 hover:bg-purple-200 text-purple-700 p-3 rounded-full border border-purple-300 transition-all duration-300 hover:scale-110 hover:rotate-12 shadow-lg click-trigger">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+
+  <script>
+    // Premium 3D Tilt Effect for Desktop Devices
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      const cards = document.querySelectorAll('.js-tilt');
+      
+      cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          const rotateX = ((y - centerY) / centerY) * -6;
+          const rotateY = ((x - centerX) / centerX) * 6;
+          
+          // Disable transition for instantaneous tracking
+          card.style.transition = 'none';
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          // Re-enable smooth transition when mouse leaves
+          card.style.transition = 'all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1)';
+          card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        });
+      });
+    }
+
+    // --- Sound Click Effect ---
+    const clickAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3');
+    clickAudio.volume = 0.4;
+
+    const clickableLinks = document.querySelectorAll('.click-trigger');
+
+    clickableLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        clickAudio.currentTime = 0;
+        clickAudio.play().catch(error => {
+          console.log("Audio play failed (browser might be blocking autoplay until more interaction):", error);
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
