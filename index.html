@@ -5,6 +5,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GOBO GOBEE | Link Portal</title>
+  <meta name="description" content="ទាក់ទង GOBO GOBEE Phone Shop - Tel: 096 8899889 | 085 88888 1 | 067 88888 1">
+
+  <!-- Facebook / Open Graph (logo shows in ad link card) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GOBO GOBEE">
+  <meta property="og:title" content="GOBO GOBEE | Link Portal">
+  <meta property="og:description" content="ទាក់ទង GOBO GOBEE Phone Shop - Tel: 096 8899889">
+  <meta property="og:url" content="https://gobo-gobe.vercel.app/">
+  <meta property="og:image" content="https://gobo-gobe.vercel.app/gobe.png">
+  <meta property="og:image:secure_url" content="https://gobo-gobe.vercel.app/gobe.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="GOBO GOBEE Logo">
+
+  <!-- Twitter / Telegram -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GOBO GOBEE | Link Portal">
+  <meta name="twitter:description" content="ទាក់ទង GOBO GOBEE Phone Shop">
+  <meta name="twitter:image" content="https://gobo-gobe.vercel.app/gobe.png">
+
+  <!-- Browser tab icon -->
+  <link rel="icon" type="image/png" href="/gobe.png">
+  <link rel="apple-touch-icon" href="/gobe.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Khmer Fonts: Dangrek, Kantumruy Pro, Koulen -->
@@ -12,28 +37,23 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
-      /* White & Purple Theme Variables */
       --bg-color-1: #ffffff;
       --bg-color-2: #fcfaff;
-      --bg-color-3: #f3e8ff; /* Light purple */
-      
-      --accent-purple: #8B5CF6; /* Vibrant Purple */
-      --accent-purple-dark: #5B21B6; /* Deep Purple */
-      --accent-purple-light: #C4B5FD; /* Soft Purple */
-      
-      --text-main: #2E1065; /* Very dark purple for contrast */
-      --text-muted: #6B7280; /* Gray for subtitles */
-      
+      --bg-color-3: #f3e8ff;
+
+      --accent-purple: #8B5CF6;
+      --accent-purple-dark: #5B21B6;
+      --accent-purple-light: #C4B5FD;
+
+      --text-main: #2E1065;
+      --text-muted: #6B7280;
+
       --card-bg: rgba(255, 255, 255, 0.7);
       --card-border: rgba(139, 92, 246, 0.15);
       --card-hover-border: rgba(139, 92, 246, 0.5);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Koulen', sans-serif;
@@ -47,13 +67,10 @@
       background-color: var(--bg-color-1);
     }
 
-    /* --- Bright Animated Background --- */
     .animated-bg {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
       z-index: -2;
       background: linear-gradient(135deg, #ffffff, #f5f3ff, #ede9fe, #ffffff);
       background-size: 400% 400%;
@@ -66,7 +83,6 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* --- Soft Purple Floating Orbs --- */
     .orb {
       position: fixed;
       border-radius: 50%;
@@ -77,20 +93,16 @@
     }
 
     .orb-1 {
-      width: 400px;
-      height: 400px;
-      background: #c4b5fd; /* Light violet */
-      top: -10%;
-      left: -15%;
+      width: 400px; height: 400px;
+      background: #c4b5fd;
+      top: -10%; left: -15%;
       animation: floatOrb 15s ease-in-out infinite alternate;
     }
 
     .orb-2 {
-      width: 350px;
-      height: 350px;
-      background: #d8b4fe; /* Bright purple */
-      bottom: -10%;
-      right: -10%;
+      width: 350px; height: 350px;
+      background: #d8b4fe;
+      bottom: -10%; right: -10%;
       animation: floatOrb 18s ease-in-out infinite alternate-reverse;
     }
 
@@ -99,11 +111,7 @@
       100% { transform: translate(80px, 60px) scale(1.1); }
     }
 
-    /* --- Typography Classes --- */
-    .dangrek-regular {
-      font-family: "Dangrek", sans-serif;
-      font-weight: 400;
-    }
+    .dangrek-regular { font-family: "Dangrek", sans-serif; font-weight: 400; }
 
     .kantumruy-pro {
       font-family: "Kantumruy Pro", sans-serif;
@@ -120,7 +128,6 @@
       perspective: 1000px;
     }
 
-    /* --- Logo Animation --- */
     .logo-container {
       display: flex;
       justify-content: center;
@@ -166,7 +173,6 @@
       100% { transform: scale(1.5); opacity: 0; }
     }
 
-    /* --- Premium 3D Brand Text --- */
     .brand-title {
       font-size: clamp(1.8rem, 6vw, 2.5rem);
       text-align: center;
@@ -181,7 +187,6 @@
       animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both 0.2s;
     }
 
-    /* --- Header Info Card --- */
     .info-header {
       background: var(--card-bg);
       backdrop-filter: blur(20px);
@@ -200,14 +205,13 @@
       color: var(--accent-purple-dark);
       margin-bottom: 0.5rem;
     }
-    
+
     .info-header p {
       font-size: 1.1rem;
       color: var(--accent-purple);
       font-weight: 600;
     }
 
-    /* --- Glassmorphism Links (Light Theme) --- */
     .link-card {
       display: flex;
       align-items: center;
@@ -230,7 +234,6 @@
       animation: slideInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
-    /* Staggered Animations */
     .link-card:nth-of-type(1) { animation-delay: 0.4s; }
     .link-card:nth-of-type(2) { animation-delay: 0.5s; }
     .link-card:nth-of-type(3) { animation-delay: 0.6s; }
@@ -274,13 +277,9 @@
       z-index: 2;
     }
 
-    .link-card:hover .icon-box {
-      transform: scale(1.15) rotate(5deg);
-    }
+    .link-card:hover .icon-box { transform: scale(1.15) rotate(5deg); }
 
-    .card-content {
-      z-index: 2;
-    }
+    .card-content { z-index: 2; }
 
     .card-content h2 {
       font-size: 1.15rem;
@@ -296,7 +295,6 @@
       line-height: 1.4;
     }
 
-    /* --- Special Offer Badge --- */
     .special-offer {
       text-align: center;
       margin-top: 2rem;
@@ -338,7 +336,6 @@
       50% { opacity: 1; transform: scale(1.03); text-shadow: 0 0 15px rgba(139, 92, 246, 0.4); }
     }
 
-    /* --- Animations --- */
     @keyframes float {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-10px); }
@@ -358,25 +355,23 @@
     @keyframes fadeIn {
       to { opacity: 1; }
     }
-
   </style>
 </head>
 
 <body>
-  <!-- Animated Background Elements -->
   <div class="animated-bg"></div>
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
 
   <div class="page-wrap">
-    
+
     <!-- Logo -->
     <div class="logo-container">
       <div class="logo-wrapper">
         <div class="ripple"></div>
         <div class="ripple"></div>
-        <img src="gobe.png" 
-             onerror="this.onerror=null; this.src='https://placehold.co/200x200/F3E8FF/5B21B6?text=GOBO'" 
+        <img src="gobe.png"
+             onerror="this.onerror=null; this.src='https://placehold.co/200x200/F3E8FF/5B21B6?text=GOBO'"
              alt="GOBO GOBEE Logo">
       </div>
     </div>
@@ -391,8 +386,7 @@
       <p class="text-sm mt-1 text-purple-600 kantumruy-pro">Telegram: 096 8899889 | 085 88888 1 | 067 88888 1</p>
     </div>
 
-    <!-- Contact Links (Unified Purple Gradients for Icons) -->
-    
+    <!-- Contact Links -->
     <a href="https://web.facebook.com/gobophoneshop?_rdc=1&_rdr#" target="_blank" class="link-card js-tilt click-trigger">
       <div class="icon-box bg-gradient-to-br from-blue-500 to-purple-600">
         <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
@@ -417,11 +411,10 @@
       </div>
     </a>
 
-
     <a href="https://www.tiktok.com/@gojophoneshop7799" target="_blank" class="link-card js-tilt click-trigger">
       <div class="icon-box bg-gradient-to-br from-purple-800 to-gray-900">
-        <img src="./gobe.png" 
-             onerror="this.onerror=null; this.src='https://placehold.co/100x100/111827/FFFFFF?text=TT'" 
+        <img src="./gobe.png"
+             onerror="this.onerror=null; this.src='https://placehold.co/100x100/111827/FFFFFF?text=TT'"
              alt="TikTok" class="w-full h-full object-cover opacity-90">
       </div>
       <div class="card-content">
@@ -432,8 +425,8 @@
 
     <a href="https://www.tiktok.com/@magnetic_apple_gojo" target="_blank" class="link-card js-tilt click-trigger">
       <div class="icon-box bg-gradient-to-br from-purple-800 to-gray-900">
-        <img src="./gobe.png" 
-             onerror="this.onerror=null; this.src='https://placehold.co/100x100/111827/FFFFFF?text=TT'" 
+        <img src="./gobe.png"
+             onerror="this.onerror=null; this.src='https://placehold.co/100x100/111827/FFFFFF?text=TT'"
              alt="TikTok" class="w-full h-full object-cover opacity-90">
       </div>
       <div class="card-content">
@@ -469,8 +462,8 @@
     <!-- Special Offer -->
     <div class="special-offer">
       <a href="https://www.facebook.com/gobephonestore" target="_blank" class="offer-img-wrapper click-trigger">
-        <img src="gobe.png" 
-             onerror="this.onerror=null; this.src='https://placehold.co/180x60/8B5CF6/FFFFFF?text=Special+Offer'" 
+        <img src="gobe.png"
+             onerror="this.onerror=null; this.src='https://placehold.co/180x60/8B5CF6/FFFFFF?text=Special+Offer'"
              alt="Special Offer">
       </a>
       <p class="kantumruy-pro">ចុចទីនេះដើម្បីដឹងតម្លៃពិសេស!</p>
@@ -488,36 +481,34 @@
   </div>
 
   <script>
-    // Premium 3D Tilt Effect for Desktop Devices
+    // 3D Tilt Effect for Desktop Devices
     if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
       const cards = document.querySelectorAll('.js-tilt');
-      
+
       cards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
           const rect = card.getBoundingClientRect();
           const x = e.clientX - rect.left;
           const y = e.clientY - rect.top;
-          
+
           const centerX = rect.width / 2;
           const centerY = rect.height / 2;
-          
+
           const rotateX = ((y - centerY) / centerY) * -6;
           const rotateY = ((x - centerX) / centerX) * 6;
-          
-          // Disable transition for instantaneous tracking
+
           card.style.transition = 'none';
           card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
         });
-        
+
         card.addEventListener('mouseleave', () => {
-          // Re-enable smooth transition when mouse leaves
           card.style.transition = 'all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1)';
           card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
         });
       });
     }
 
-    // --- Sound Click Effect ---
+    // Sound Click Effect
     const clickAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3');
     clickAudio.volume = 0.4;
 
@@ -527,7 +518,7 @@
       link.addEventListener('click', () => {
         clickAudio.currentTime = 0;
         clickAudio.play().catch(error => {
-          console.log("Audio play failed (browser might be blocking autoplay until more interaction):", error);
+          console.log("Audio play failed:", error);
         });
       });
     });
